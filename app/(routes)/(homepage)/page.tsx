@@ -4,11 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "../_components/Footer";
 
+interface Post {
+  id: string;
+  title: string;
+  date: string;
+}
+
+
 export default async function Home() {
   let data = await fetch("https://api.vercel.app/blog");
-  let posts = await data.json();
+  let posts: Post[] = await data.json();
   
-  let latestPosts = posts.slice(0, 4);
+  let latestPosts: Post[] = posts.slice(0, 4);
 
   return (
     <div className="space-y-8">
@@ -45,7 +52,7 @@ export default async function Home() {
         <h2 className="text-2xl font-semibold">Son Yazılar</h2>
         <ul className="post-list w-full mt-8 px-4 space-y-4">
           {latestPosts.map((post) => (
-            <li key={post.id} className="h-entry ">
+            <li key={post.id} className="h-entry">
               <div className="post-list-item flex justify-between text-lg">
                 <span className="posts-list-title">
                   <Link className="post-list-item flex justify-between text-lg" href={`/blog/${post.id}`}>{post.title}</Link>
@@ -64,4 +71,5 @@ export default async function Home() {
     </div>
   );
 }
+
 

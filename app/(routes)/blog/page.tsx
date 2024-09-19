@@ -6,23 +6,11 @@ interface Post {
   title: string;
 }
 
-export const getServerSideProps = async () => {
-    let data = await fetch('https://nextblog-backend.onrender.com/api/posts', {
-        headers: {
-            'Cache-Control': 'no-cache'
-        }
-    });
+const BlogPage = async () => {
+    let data = await fetch('https://nextblog-backend.onrender.com/api/posts');
     let response = await data.json();
     let posts: Post[] = response.posts;
-
-    return {
-        props: {
-            posts
-        }
-    };
-}
-
-const BlogPage = ({ posts }: { posts: Post[] }) => {
+    
     return (
       <ul className='flex flex-col justify-between items-center space-y-4'>
         {posts.map((post) => (

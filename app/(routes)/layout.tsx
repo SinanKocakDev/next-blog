@@ -8,7 +8,7 @@ interface RootLayoutProps {
 const RoutesLayout = ({children}:RootLayoutProps) => {
   return (
     <main className='antialiased min-h-screen flex justify-center mx-auto bg-slate-200 dark:bg-black '>
-      <div className=''>
+      <div className='container flex-col'>
       <Header />
         {children}
       </div>

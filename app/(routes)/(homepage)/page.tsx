@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { socialMedia } from "@/constans";
-import Image from "next/image";
+import NextImage from "next/image";
 import Link from "next/link";
 import Footer from "../_components/Footer";
 
@@ -19,13 +19,18 @@ export default async function Home() {
 
   return (
     <div className="space-y-8">
-      <Image
-        src={"/banner.jpg"}
-        alt={"banner"}
-        width={750}
-        height={200}
-        className="mt-4 rounded-xl"
-      />
+
+      <NextImage
+          src="/banner.jpg"
+          alt="Sinan Koçak ve kızı"
+          priority
+          quality={100}
+          width={750}
+          height={200}
+          className="rounded-3xl"
+        />
+
+      
       <div className="hello px-8">
         <p className="text-2xl leading-relaxed text-center">
           Selam ziyaretçi 👋, ben Sinan! Kişisel websiteme hoşgeldin. GNU/Linux
